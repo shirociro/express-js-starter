@@ -2,7 +2,7 @@ export const PostgresUserRepo = {
   // 1. Fetch user by username
   async findByUsername(db, username) {
     const { rows } = await db.query(
-      'SELECT * FROM users WHERE username = $1 LIMIT 1',
+      'SELECT * FROM tbl_users WHERE username = $1 LIMIT 1',
       [username]
     )
     return rows[0] || null
@@ -12,7 +12,7 @@ export const PostgresUserRepo = {
   async findById(db, id) {
     const { rows } = await db.query(
       `SELECT id, firstname, lastname, username, role_id, position, profile, created_at 
-       FROM users 
+       FROM tbl_users 
        WHERE id = $1`,
       [id]
     )
@@ -22,7 +22,7 @@ export const PostgresUserRepo = {
   // 3. Insert new user
   async insertUser(db, { username, hashedPassword, firstname, lastname }) {
     const { rows } = await db.query(
-      `INSERT INTO users (username, password, firstname, lastname, created_at)
+      `INSERT INTO tbl_users (username, password, firstname, lastname, created_at)
        VALUES ($1, $2, $3, $4, NOW())
        RETURNING id`,
       [username, hashedPassword, firstname, lastname]
@@ -34,7 +34,7 @@ export const PostgresUserRepo = {
   // 4. Save refresh token
   async insertRefreshToken(db, userId, token, expiresAt) {
     await db.query(
-      `INSERT INTO refresh_tokens (user_id, token, expires_at)
+      `INSERT INTO tbl_refresh_tokens (user_id, token, expires_at)
        VALUES ($1, $2, $3)`,
       [userId, token, expiresAt]
     )
@@ -43,7 +43,7 @@ export const PostgresUserRepo = {
   // 5. Find refresh token
   async findRefreshToken(db, token) {
     const { rows } = await db.query(
-      'SELECT * FROM refresh_tokens WHERE token = $1',
+      'SELECT * FROM tbl_refresh_tokens WHERE token = $1',
       [token]
     )
     return rows[0] || null
@@ -52,7 +52,7 @@ export const PostgresUserRepo = {
   // 6. Log user action
   async logAction(db, userId, action) {
     await db.query(
-      `INSERT INTO logs (user_id, action, created_at)
+      `INSERT INTO tbl_logs (user_id, action, created_at)
        VALUES ($1, $2, NOW())`,
       [userId, action]
     )
@@ -62,7 +62,7 @@ export const PostgresUserRepo = {
   async getAllUsers(db) {
     const { rows } = await db.query(
       `SELECT id, firstname, lastname, username, role_id, position, profile, created_at 
-       FROM users`
+       FROM tbl_users`
     )
     return rows
   },
