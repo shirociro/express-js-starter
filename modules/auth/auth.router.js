@@ -1,8 +1,8 @@
 import express from 'express'
 import { authController } from './auth.index.js' // Use container, not controller directly
-import { apiLimiter } from '../../common/middleware/rateLimiter.js'
+import { apiLimiter } from '../../shared/middleware/rateLimiter.js'
 import { registerValidation } from './auth.validation.js'
-import { validate } from '../../common/middleware/validationHandler.js'
+import { validate } from '../../shared/middleware/validationHandler.js'
 
 const router = express.Router()
 

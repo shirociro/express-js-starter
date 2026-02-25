@@ -1,6 +1,6 @@
 import express from 'express'
 import { getHealth } from './health.controller.js'
-import { apiLimiter } from '../../common/middleware/rateLimiter.js'
+import { apiLimiter } from '../../shared/middleware/rateLimiter.js'
 
 const router = express.Router()
 

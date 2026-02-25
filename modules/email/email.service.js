@@ -1,4 +1,4 @@
-// import { sendEmail } from '../../common/email/email.index.js'
+// import { sendEmail } from '../../shared/email/email.index.js'
 // import { contactEmailTemplate } from './templates/template1.template.js'
 
 // export const sendContactEmail = async (payload) => {
@@ -24,7 +24,7 @@
 //   }
 // }
 
-import { sendEmail } from '../../common/email/email.index.js'
+import { sendEmail } from '../../shared/email/email.index.js'
 import { contactEmailTemplate } from './templates/template1.template.js'
 
 export const sendContactEmail = async payload => {

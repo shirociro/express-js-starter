@@ -3,7 +3,7 @@ const userModel = createUserModel()
 
 import { createUserService } from './user.service.js'
 import { createUserController } from './user.controller.js'
-import { success, error } from '../../common/utils/response.js'
+import { success, error } from '../../shared/utils/response.js'
 import { EVENTS } from '../../core/events/eventTypes.js'
 import appEmitter from '../../core/events/eventEmitter.js'
 // import userModel from './user.repository.js'

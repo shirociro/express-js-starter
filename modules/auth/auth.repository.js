@@ -1,9 +1,10 @@
 import { getDb } from '../../config/dbswitch.js'
 import { MongoUserRepo } from './auth.mongo.js'
 import { MySQLUserRepo } from './auth.mysql.js'
+import { PostgresUserRepo } from './auth.postgres.js'
 
 const DB_TYPE = process.env.DB_TYPE || 'mysql'
-const Repo = DB_TYPE === 'mongo' ? MongoUserRepo : MySQLUserRepo
+const Repo = DB_TYPE === 'mongo' ? MongoUserRepo : DB_TYPE === 'postgres' ? PostgresUserRepo : MySQLUserRepo
 
 const authModel = {
   findByUsername: username => Repo.findByUsername(getDb(), username),

@@ -1,5 +1,5 @@
 import express from 'express'
-import { verifyToken } from '../../common/middleware/verifyToken.js'
+import { verifyToken } from '../../shared/middleware/verifyToken.js'
 import { userController } from './users.index.js' 
 import { uploadProfile } from '../../config/multer.js'
 

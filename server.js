@@ -5,7 +5,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { initSocket } from './core/sockets/socket.js'
-import { apiLimiter } from './common/middleware/rateLimiter.js'
+import { apiLimiter } from './shared/middleware/rateLimiter.js'
 
 const PORT = config.port
 const __filename = fileURLToPath(import.meta.url)

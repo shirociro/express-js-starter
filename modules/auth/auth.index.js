@@ -5,7 +5,7 @@ import authModel from './auth.repository.js'
 
 import { createAuthService } from './auth.service.js'
 import { createAuthController } from './auth.controller.js'
-import { success, error } from '../../common/utils/response.js'
+import { success, error } from '../../shared/utils/response.js'
 
 // 1️⃣ Service DI
 const authService = createAuthService({

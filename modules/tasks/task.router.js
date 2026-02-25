@@ -1,5 +1,5 @@
 import express from 'express'
-import { verifyToken } from '../../common/middleware/verifyToken.js'
+import { verifyToken } from '../../shared/middleware/verifyToken.js'
 import { taskController } from './task.index.js' // Use container, not controller directly
 
 const router = express.Router()
