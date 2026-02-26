@@ -19,8 +19,8 @@ export function createTaskModel() {
         }
 
         const baseQuery = `
-      FROM tasks t
-      LEFT JOIN users u ON t.user_id = u.id
+      FROM tbl_tasks t
+      LEFT JOIN tbl_users u ON t.user_id = u.id
       ${where}
     `
 
@@ -58,7 +58,7 @@ export function createTaskModel() {
 
         const [rows] = await conn.query(`
       SELECT COUNT(*) AS total
-      FROM tasks t
+      FROM tbl_tasks t
       ${where}
     `)
 
@@ -126,8 +126,8 @@ export function createTaskModel() {
           t.priority,
           t.created_at,
           t.updated_at
-         FROM tasks t
-         LEFT JOIN users u ON t.user_id = u.id
+         FROM tbl_tasks t
+         LEFT JOIN tbl_users u ON t.user_id = u.id
          WHERE t.id = ?`,
         [id]
       )
@@ -142,7 +142,7 @@ export function createTaskModel() {
       try {
         // Escape the id to avoid injection
         const safeId = conn.escape(id)
-        const [result] = await conn.query(`DELETE FROM tasks WHERE id = ${safeId}`)
+        const [result] = await conn.query(`DELETE FROM tbl_tasks WHERE id = ${safeId}`)
 
         return result.affectedRows > 0
       } finally {
