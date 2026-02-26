@@ -27,8 +27,9 @@ const app = express()
 
 const allowedOrigins = [
   'http://localhost:5173',           // local dev
-  'https://react-task-manager-uo5a.onrender.com', // production
-  'https://vue-projects-nggr.onrender.com',
+  'https://react-task-manager-uo5a.onrender.com', // React projects
+  'https://vue-projects-nggr.onrender.com', // Vue projects
+  'https://vue-login-wzvg.onrender.com', // login page
 ];
 
 app.use(cors({
@@ -65,11 +66,6 @@ app.use('/meta', metaRoutes)
 export async function createApp() {
   await initDb()
   return app
-  // const db = await initDb()
-  // app.use((req, res, next) => {
-  //   req.db = db
-  //   next()
-  // })
 }
 
 export default app
