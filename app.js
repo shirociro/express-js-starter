@@ -25,8 +25,6 @@ import { initDb } from './config/dbswitch.js'
 
 const app = express()
 
-import cors from 'cors';
-
 const allowedOrigins = [
   'http://localhost:5173',           // local dev
   'https://react-task-manager-uo5a.onrender.com', // production
