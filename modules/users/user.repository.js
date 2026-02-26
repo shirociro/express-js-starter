@@ -2,8 +2,10 @@ import { getDb } from '../../config/dbswitch.js'
 import { MongoUserRepo } from './user.mongo.js'
 import { MySQLUserRepo } from './user.mysql.js'
 
+import { PostgresUserRepo } from './user.postgres.js'
+
 const DB_TYPE = process.env.DB_TYPE || 'mysql'
-const Repo = DB_TYPE === 'mongo' ? MongoUserRepo : MySQLUserRepo
+const Repo = DB_TYPE === 'mongo' ? MongoUserRepo : DB_TYPE === 'postgres' ? PostgresUserRepo : MySQLUserRepo
 
 const userModel = {
   // Users
