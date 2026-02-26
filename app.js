@@ -25,7 +25,25 @@ import { initDb } from './config/dbswitch.js'
 
 const app = express()
 
-app.use(cors())
+import cors from 'cors';
+
+const allowedOrigins = [
+  'http://localhost:5173',           // local dev
+  'https://react-task-manager-uo5a.onrender.com', // production
+  'https://vue-projects-nggr.onrender.com',
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // allow cookies/auth headers
+}));
 app.use(jsonParser)
 app.use(urlencodedParser)
 
